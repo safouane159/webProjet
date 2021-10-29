@@ -15,22 +15,30 @@
   <p><input 
     @input="getRestaurantsFromServer()"
     type="range" min=2 max=100 v-model="pageSize">{{pageSize}}</p>  
-      <table>
-        <tr>
-            <th>Nom</th>
-            <th>Cuisine </th>
-        </tr>
-        <tbody>
-            <tr v-for="(r,index) in restaurants" 
-            :key="index"
-            @click="supprimerRestaurant(r._id)" 
-            :style="{backgroundColor:getColor(index)}"
-                :class="{bordureRouge:(index === 2)}">
-                <td>{{r.name}}</td>
-                <td> {{r.cuisine}}</td>
-            </tr>
-        </tbody>
-    </table>
+
+
+
+
+      <md-table v-model="restaurants" md-card md-fixed-header>
+           <md-table-toolbar>
+        <h1 class="md-title">Restaurants</h1>
+      </md-table-toolbar>
+        
+       <md-table-row slot="md-table-row" slot-scope="{ item }" >
+
+                <md-table-cell md-label="Name"  >{{item.name}}</md-table-cell>
+                <md-table-cell md-label="Cuisine"  > {{item.cuisine}}</md-table-cell>
+                <md-table-cell md-label="Ville"  > {{item.borough}}</md-table-cell>
+           <md-table-cell  >  <b-button @click="goTodetail()" variant="warning">Plus d'info</b-button></md-table-cell>
+           <md-table-cell  > <md-button @click="supprimerRestaurant(item._id)"  class="md-fab md-mini" >
+        <md-icon>delete</md-icon>
+      </md-button></md-table-cell>
+       </md-table-row>
+    </md-table>>
+
+
+
+    
   </div>
 </template>
 
@@ -55,6 +63,10 @@ console.log("avant l'affichage");
 this.getRestaurantsFromServer();
         },
         methods: {
+            goToRes(){
+                
+ this.$router.push('/detailRestaurant'); 
+      },
           
             getRestaurantsFromServer() {
                 let Url = "http://localhost:8080/api/restaurants?";

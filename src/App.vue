@@ -34,6 +34,7 @@ export default {
 #first {
   background-color: rgb(252, 243, 218);
 padding: 0%;
+text-align: center;
 }
 #row {
   height: 100%;
@@ -51,7 +52,7 @@ height: 100%;
 #app {
   height: 1000px;
   
-  text-align: center;
+  
   
   
  
