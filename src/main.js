@@ -11,6 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import VueMaterial from 'vue-material'
 import ListResaurants from './components/ListRestaurants.vue'
+import RestaurantDetail from './components/RestaurantDetail.vue'
 import Acceuil from './components/Acceuil.vue'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
@@ -32,6 +33,11 @@ const router = new VueRouter({
       path: "/ListRestaurants",
       
       component: ListResaurants,
+      
+    },{
+      path: "/RestaurantDetail/:id",
+      
+      component: RestaurantDetail,
       
     }
   ],

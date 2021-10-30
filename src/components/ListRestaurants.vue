@@ -29,7 +29,8 @@
                 <md-table-cell md-label="Name"  >{{item.name}}</md-table-cell>
                 <md-table-cell md-label="Cuisine"  > {{item.cuisine}}</md-table-cell>
                 <md-table-cell md-label="Ville"  > {{item.borough}}</md-table-cell>
-           <md-table-cell  >  <b-button @click="goTodetail()" variant="warning">Plus d'info</b-button></md-table-cell>
+                 
+           <md-table-cell  >  <b-button @click="goTodetail(item._id)" variant="warning">Plus d'info</b-button></md-table-cell>
            <md-table-cell  > <md-button @click="supprimerRestaurant(item._id)"  class="md-fab md-mini" >
         <md-icon>delete</md-icon>
       </md-button></md-table-cell>
@@ -63,9 +64,12 @@ console.log("avant l'affichage");
 this.getRestaurantsFromServer();
         },
         methods: {
-            goToRes(){
+            goTodetail(id){
                 
- this.$router.push('/detailRestaurant'); 
+ this.$router.push('/RestaurantDetail/'+id); 
+      },
+       test(testID){
+                alert(testID);
       },
           
             getRestaurantsFromServer() {
