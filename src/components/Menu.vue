@@ -19,7 +19,7 @@
           </nav>
           
         </div>
- 
+        
   </div>
    
     
@@ -28,6 +28,7 @@
 <script>
 export default {
   name: 'Menu',
+  
   
 }
 </script>

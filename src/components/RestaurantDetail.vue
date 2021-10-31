@@ -100,8 +100,10 @@ let url = "http://localhost:8080/api/restaurants/"+this.id;
 #carte {
   background-color: aliceblue;
     height: 90%;
-    margin-top: 100px;
-     margin-left: 200px;
+    margin-top: 150px;
+     margin-left: 150px;
+     margin-right: 100px;
+     
  
 }
 
