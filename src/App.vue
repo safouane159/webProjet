@@ -4,7 +4,7 @@
   <b-row id="row"><b-col id="first" sm="2"> <div id="menu" >
       <Menu />
       </div></b-col>
-    <b-col id="second" sm="10">
+    <b-col id="second" sm="9">
    
       
   <router-view></router-view> </b-col>
@@ -33,17 +33,15 @@ export default {
 <style>
 #first {
   background-color: rgb(252, 243, 218);
-
+padding: 0%;
 text-align: center;
 }
 #row {
-  
-  margin-right:10px ;
   height: 100%;
 }
 #second {
   height: 100%;
-
+padding: 0%;
 }
 
 #app {
@@ -55,13 +53,19 @@ text-align: center;
  
 }
 #body {
-   
   background-image: url('./assets/BG.png');
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;;
 
 
 background-size: cover;
  
 }
-
+#pic {
+  position: relative; 
+  background-image: url('/assets/DG.png.');
+background-repeat:no-repeat;
+   background-size:contain;
+   height:200px;width:1200px;
+    height: 40%;
+}
 </style>
