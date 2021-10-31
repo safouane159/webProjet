@@ -6,8 +6,8 @@
       </div></b-col>
     <b-col id="second" sm="9">
    
-      <div id="mymain">
-  <router-view></router-view> </div></b-col>
+      
+  <router-view></router-view> </b-col>
   </b-row>
 
 
@@ -40,15 +40,10 @@ text-align: center;
   height: 100%;
 }
 #second {
-  
+  height: 100%;
 padding: 0%;
 }
-#mymain {
-  
-height: 100%;
- 
-  margin-top: 0px;
-}
+
 #app {
   height: 1000px;
   
@@ -64,5 +59,13 @@ height: 100%;
 
 background-size: cover;
  
+}
+#pic {
+  position: relative; 
+  background-image: url('/assets/DG.png.');
+background-repeat:no-repeat;
+   background-size:contain;
+   height:200px;width:1200px;
+    height: 40%;
 }
 </style>
