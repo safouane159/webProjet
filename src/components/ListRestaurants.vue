@@ -4,32 +4,16 @@
 
 <h1 id="title1">Trouver votre restaurant</h1>
 
-<!-- <form  @submit="ajouterRestaurant($event)">
-        <label>
-            Name : <input type="text"  name="nom" >
-        </label>
-        <label>
-            Cuisine : <input type="text" name="cuisine" >
-        </label>
-
-        <button>Ajouter</button>
-    </form>
-
-
-    <h1>Nombre de restaurants :</h1>
-  <p><input 
-    @input="getRestaurantsFromServer()"
-    type="range" min=2 max=100 v-model="pageSize">{{pageSize}}</p>  -->  
 
   <div id="tab">
       <md-table-toolbar>
 
-<b-col >
+<b-col id="colA">
 <md-button class="md-fab md-mini md-primary" v-b-toggle.sidebar-backdrop>
         <md-icon>add</md-icon>
       </md-button>
 </b-col >
-<b-col >
+<b-col id="colB">
  <h1 id="res">Résulat :  {{NbrTotalRestaurant}} </h1>
 </b-col >
 <b-col cols="3">
@@ -38,6 +22,7 @@
 
         
       </md-table-toolbar>
+      <b-alert show variant="warning" id="alrt">aucun restaurant ne correspond à votre recherche</b-alert>
       <md-table id="inside" v-model="restaurants" md-card md-fixed-header>
            
       
@@ -67,7 +52,9 @@
       shadow
     >
       <div class="px-3 py-2">
+          <h2>Ajouter Restaurant</h2>
         <b-form   @submit="ajouterRestaurant($event)" >
+            <hr data-content="AND" class="hr-text">
          <b-form-group
         id="input-group-1"
         label="Restaurant Name:"
@@ -83,7 +70,7 @@
           required
         ></b-form-input>
       </b-form-group>
-       
+         <hr data-content="hello" class="hr-text">
 <b-form-group
         id="input-group-1"
         label="Cuisine:"
@@ -98,10 +85,12 @@
           placeholder="saisissez la cuisine"
           required
         ></b-form-input>
+
       </b-form-group>
+        <hr data-content="AND" class="hr-text">
       <b-form-group
         id="input-group-1"
-        label="Cuisine:"
+        label="Ville:"
         label-for="input-1"
         
       >
@@ -114,9 +103,10 @@
           required
         ></b-form-input>
       </b-form-group>
+      <div id="mylovelybuttons">
       <b-button type="submit" variant="primary" @click="hide"  block>Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
-       
+      </div>
     </b-form>
       </div>
        
@@ -138,7 +128,7 @@ export default {
             name: '',
             cuisine: '',
             borough:'',
-            NbrTotalRestaurant: 0,
+            NbrTotalRestaurant: 2,
             page:0,
             NomAchercher:'',
             pageSize:20
@@ -147,6 +137,7 @@ export default {
 
 console.log("avant l'affichage");
 this.getRestaurantsFromServer();
+
         },
         methods: {
             goTodetail(id){
@@ -158,6 +149,7 @@ this.getRestaurantsFromServer();
       },
           
             getRestaurantsFromServer() {
+                var ddl = document.getElementById('alrt');
                 let Url = "http://localhost:8080/api/restaurants?";
               let  UrlComplet = Url + "page=" + this.page ; 
               UrlComplet  += "&pagesize="+ this.pageSize;
@@ -167,16 +159,30 @@ this.getRestaurantsFromServer();
                     
                         this.restaurants = res.data;
                         this.NbrTotalRestaurant = res.count;
+if(res.count == 0){
+  ddl.style.display = "block"; 
+}else{
+    ddl.style.display = "none"; 
+}
                     }
                     )
                     
                 }).catch(function() {
                     // Error :(
                 });
+                
             },
             chercheResataurants: _.debounce(function(){
                 this.getRestaurantsFromServer();
+
+
+
             },300),
+
+
+
+
+
             supprimerRestaurant(restaurantId) {
                 let UrlId = "http://localhost:8080/api/restaurants/" +restaurantId ;
                 fetch(UrlId, {
@@ -278,7 +284,7 @@ ddl.style.display = "none";
    
      color:rgb(255, 213, 27);
     font-size: 90px;
-    margin-top: 100px;
+    margin-top: 70px;
  
     text-align: center;
  
@@ -292,4 +298,38 @@ ddl.style.display = "none";
     font-size: 30px;
  font-family: "Gill Sans", sans-serif;
 }
+#colA,#colB {
+   text-align:left;
+    
+}
+hr.hr-text {
+  position: relative;
+    border: none;
+    height: 1px;
+    background: #999;
+}
+
+hr.hr-text::before {
+    content: attr(data-content);
+    display: inline-block;
+    background: #fff;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: #999;
+    border-radius: 30rem;
+    padding: 0.2rem 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#mylovelybuttons{
+  margin-top: 20px;
+}
+#alrt{
+  display: none;
+
+}
+
+
 </style>
