@@ -3,7 +3,7 @@
   <h1 id="bienvenue" >Bienvenue</h1>
   <h1>Gérer Les restaurants</h1>
  
-<b-button variant="warning" @click="goToRes()"> <router-link to="/ListRestaurants">   Commancer </router-link> 
+<b-button variant="warning" @click="goToRes()">   Commancer 
 </b-button>
   </div>
 </template>
