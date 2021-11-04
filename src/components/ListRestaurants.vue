@@ -153,7 +153,7 @@ export default {
       NbrTotalpage:0,
 Listname: ["Retour de marché ","Grande Table","Signature Marine","Le menu Terroir ","Menu du Blad","Menu Abdelhadi kessel"],
       CarteFinal:{ carteEntree:[],carteDessert:[],carteBoissons:[],cartePlat:[],
-          Menu:{nom:[] , Entree :[],plat:[],Dessert:[]  }},
+          Menu:{nom:[] , Entree :[],plat:[],Dessert:[] ,price:[] }},
       
       
       
@@ -163,13 +163,13 @@ Listname: ["Retour de marché ","Grande Table","Signature Marine","Le menu Terro
       ListDessert:[{name:"Tarte au citron meringuée", prix: 3.5},{name:"Fondant chocolat cœur coulant", prix: 3.5},{name:"Crumble aux pommes caramélisées maison", prix: 3.5},{name:"Tiramisu au café fort", prix: 3.5},{name:"Glace à la vanille", prix: 3.5},{name:"Petits moelleux chocolat et spéculoos", prix: 3.5},{name:"Crème brûlée rapide", prix: 3.5},{name:"Panna cotta vanille et citron", prix: 3.5},{name:"Crêpes Suzette au Grand Marnier", prix: 3.5},{name:"tarte aux Daims", prix: 3.5}],
       ListPlats:[{ name: 'Tajine',desc:'trés bon',img:'',prix:23 },
       { name: 'Couscous',desc:'trés bon',img:'',prix:23 },
-      { name: 'A',desc:'trés bon',img:'none',prix:23 },
-      { name: 'B',desc:'trés bon',img:'none',prix:23 },
-      { name: 'C',desc:'trés bon',img:'none',prix:23 },
-      { name: 'D',desc:'trés bon',img:'none',prix:23 },
-      { name: 'E',desc:'trés bon',img:'none',prix:23 },
-      { name: 'F',desc:'trés bon',img:'none',prix:23 },
-      { name: 'J',desc:'trés bon',img:'none',prix:23 }]
+      { name: 'A',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'B',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'C',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'D',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'E',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'F',desc:'trés bon',img:'tajin.jpeg',prix:23 },
+      { name: 'J',desc:'trés bon',img:'tajin.jpeg',prix:23 }]
 
     };
   },
@@ -235,7 +235,7 @@ if (i < 3){
 this.CarteFinal.Menu.Entree.push(ListTaken1[random1] );
 
 }
-//alert(this.CarteFinal.Menu.Entree[i].name)
+
 
 
 this.removeItem(ListTaken1,ListTaken1[random1] );
@@ -266,6 +266,7 @@ this.removeItem(ListTaken2,ListTaken2[random2] );
 
 
 }
+
 
   //6 plats 
 let ListTaken3 = this.ListPlats;
@@ -302,8 +303,8 @@ this.CarteFinal.Menu.nom.push(Taken1[Mrandom1] );
 
 this.removeItem(Taken1,Taken1[Mrandom1] );
 
-  
-
+  this.CarteFinal.Menu.price.push(this.CarteFinal.Menu.Dessert[i].prix+this.CarteFinal.Menu.plat[i].prix+this.CarteFinal.Menu.Entree[i].prix );
+alert( this.CarteFinal.Menu.price[i])
 
 }
 

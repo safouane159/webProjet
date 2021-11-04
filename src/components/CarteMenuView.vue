@@ -4,10 +4,10 @@
       
       <b-col cols="6" id="cool8">
         
-       <CarteRestaurant :wsl="info" />
+       <CarteRestaurant :wsl="maCarte" />
       </b-col>
       <b-col cols="6" id="maapC" >
-         <MenuRestaurant />
+         <MenuRestaurant :CarteEtMenu="maCarte" />
       </b-col>
     </b-row>
     
@@ -33,8 +33,10 @@ export default {
   data: function () {
     return {
      
-     info :'le3Ba'
-
+    
+     
+maCarte:{ carteEntree:[],carteDessert:[],carteBoissons:[],cartePlat:[],Menu:[] },
+id:0
     };
   },
 
@@ -47,12 +49,14 @@ export default {
     
   },
   mounted() {
-   
-    /*this.maCarteFinal.carteEntree = this.$route.params.myobj.carteEntree ;
-this.maCarteFinal.carteDessert = this.$route.params.myobj.carteBoissons ;
-this.maCarteFinal.carteBoissons = this.$route.params.myobj.carteDessert ;
-this.maCarteFinal.cartePlat = this.$route.params.myobj.cartePlat ;
-this.maCarteFinal.Menu = this.$route.params.myobj.Menu ;*/
+    this.maCarte.carteEntree = this.$route.params.myobj.carteEntree ;
+this.maCarte.carteDessert = this.$route.params.myobj.carteBoissons ;
+this.maCarte.carteBoissons = this.$route.params.myobj.carteDessert ;
+this.maCarte.cartePlat = this.$route.params.myobj.cartePlat ;
+this.maCarte.Menu = this.$route.params.myobj.Menu ;
+
+   this.id = this.$route.params.id;
+    
   },
 };
 </script>
