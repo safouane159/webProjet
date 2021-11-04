@@ -10,6 +10,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // Make BootstrapVue available throughout your project
 
 import VueMaterial from 'vue-material'
+
+import CarteMenuView from './components/CarteMenuView.vue'
 import ListResaurants from './components/ListRestaurants.vue'
 import RestaurantDetail from './components/RestaurantDetail.vue'
 import Acceuil from './components/Acceuil.vue'
@@ -21,7 +23,7 @@ Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyCQ4nWJ81OtLFgvISHrniBSs28twIi5Tao',
+   // key: 'AIzaSyCQ4nWJ81OtLFgvISHrniBSs28twIi5Tao',
     libraries: 'places',
   }
 });
@@ -40,9 +42,15 @@ const router = new VueRouter({
       component: ListResaurants,
       
     },{
-      path: "/RestaurantDetail/:id",
-      
+      path: "/RestaurantDetail",
+      name : 'RestaurantDetail',
       component: RestaurantDetail,
+     
+      
+    },
+    {path: "/CarteMenuView",
+    name : 'CarteMenuView',
+      component: CarteMenuView,
       
     }
   ],

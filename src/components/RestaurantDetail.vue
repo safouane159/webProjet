@@ -4,8 +4,19 @@
       <b-col cols="8" id="cool8">
         <div id="pic">
           <div id="title">
+            <b-row>
+              <b-col >
             <h2 id="small">Restaurant</h2>
             <h1 id="big">{{ restaurant.name }}</h1>
+              </b-col>
+              <b-col id="btn3">
+            
+      
+      
+                  <md-button class="md-accent" id="btn4" v-on:click="gotTOoMenu()"><md-icon >restaurant</md-icon>Carte/Menu</md-button>
+      
+              </b-col>
+                   </b-row>
           </div>
         </div>
         <div id="info">
@@ -67,27 +78,43 @@
 <script>
 export default {
   name: "RestaurantDetail",
-  props: {},
+  props: {
+
+  },
   data: function () {
     return {
      
-
+maCarteFinal:{ carteEntree:[],carteDessert:[],carteBoissons:[],cartePlat:[],Menu:[] },
+idR:0,
       restaurant: null,
     };
   },
 
   methods: {
+gotTOoMenu(){
+this.$router.push({name: 'CarteMenuView' ,params:{id:this.idR , myobj:  this.maCarteFinal }});
 
+
+
+}
 
 
   },
   computed: {
-    id() {
-      return this.$route.params.id;
-    },
+  obj(){
+    return this.$route.params.obj.carteBoissons  ;
+  }
   },
   mounted() {
-    let url = "http://localhost:8080/api/restaurants/" + this.id;
+    this.idR =this.$route.params.id ;
+    this.$route.params.obj.Menu.Entree
+    this.maCarteFinal.carteEntree = this.$route.params.obj.carteEntree ;
+this.maCarteFinal.carteDessert = this.$route.params.obj.carteBoissons ;
+this.maCarteFinal.carteBoissons = this.$route.params.obj.carteDessert ;
+this.maCarteFinal.cartePlat = this.$route.params.obj.cartePlat ;
+this.maCarteFinal.Menu = this.$route.params.obj.Menu ;
+
+    let url = "http://localhost:8080/api/restaurants/"+this.$route.params.id  ;
     fetch(url)
       .then((reponse) => {
         return reponse.json();
@@ -173,6 +200,19 @@ export default {
 }
 #cool8 {
   padding-right: 0;
+  
+}
+#btn3 {
+
+    text-align: right;
+    
+    padding-top: 60px;
+  
+}
+#btn4 {
+   font-family: Georgia, serif;
+color: rgb(255, 153, 0);
+    font-size: 20px;
   
 }
 #pic {

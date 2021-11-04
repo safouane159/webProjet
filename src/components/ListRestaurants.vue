@@ -149,7 +149,28 @@ export default {
       page: 0,
       NomAchercher: "",
       pageSize: 20,
-      NbrTotalpage:0
+      idR :0,
+      NbrTotalpage:0,
+Listname: ["Retour de marché ","Grande Table","Signature Marine","Le menu Terroir ","Menu du Blad","Menu Abdelhadi kessel"],
+      CarteFinal:{ carteEntree:[],carteDessert:[],carteBoissons:[],cartePlat:[],
+          Menu:{nom:[] , Entree :[],plat:[],Dessert:[]  }},
+      
+      
+      
+      
+      ListBoissons:[{name: "Coca", prix: 2},{name:"Ice tea", prix: 2},{name:"Vin Rouge", prix: 2},{name:"Vin Rosé", prix: 2},{name:"Coca zero", prix: 2}],
+      ListEntre:[{name:"Velouté de potimarron aux cèpes", prix: 2},{name:"Salade sapin de Noël", prix: 2},{name:"Œufs mimosa aux œufs de saumon", prix: 2},{name:"Salade de crabe", prix: 2},{name:"Mousse avocat saumon", prix: 2}],
+      ListDessert:[{name:"Tarte au citron meringuée", prix: 3.5},{name:"Fondant chocolat cœur coulant", prix: 3.5},{name:"Crumble aux pommes caramélisées maison", prix: 3.5},{name:"Tiramisu au café fort", prix: 3.5},{name:"Glace à la vanille", prix: 3.5},{name:"Petits moelleux chocolat et spéculoos", prix: 3.5},{name:"Crème brûlée rapide", prix: 3.5},{name:"Panna cotta vanille et citron", prix: 3.5},{name:"Crêpes Suzette au Grand Marnier", prix: 3.5},{name:"tarte aux Daims", prix: 3.5}],
+      ListPlats:[{ name: 'Tajine',desc:'trés bon',img:'',prix:23 },
+      { name: 'Couscous',desc:'trés bon',img:'',prix:23 },
+      { name: 'A',desc:'trés bon',img:'none',prix:23 },
+      { name: 'B',desc:'trés bon',img:'none',prix:23 },
+      { name: 'C',desc:'trés bon',img:'none',prix:23 },
+      { name: 'D',desc:'trés bon',img:'none',prix:23 },
+      { name: 'E',desc:'trés bon',img:'none',prix:23 },
+      { name: 'F',desc:'trés bon',img:'none',prix:23 },
+      { name: 'J',desc:'trés bon',img:'none',prix:23 }]
+
     };
   },
   mounted() {
@@ -158,15 +179,157 @@ export default {
   },
 
   methods: {
+
+
+
+
+
+
+
+    goTodetail(id) {
+this.generateRandomCarte();
+
+this.idR = id ;
+
+      this.$router.push({name: 'RestaurantDetail' ,params:{id:this.idR , obj:  this.CarteFinal }});
+    },generateRandomCarte(){
+ 
+
+
+// 4 boisson
+  let ListTaken = this.ListBoissons;
+  let random = 0;
+  
+for (let i = 0; i < 4; i++) {
+  
+ do{
+//generate random number 
+   random = this.getRandomInt(0,this.ListBoissons.length+1);
+
+ }while(ListTaken.includes(ListTaken[random]) == false)
+
+this.CarteFinal.carteBoissons.push(ListTaken[random] );
+
+this.removeItem(ListTaken,ListTaken[random] );
+    
+   
+
+
+}
+
+  
+  // 4 entré
+let ListTaken1 = this.ListEntre;
+  let random1 = 0;
+  
+for (let i = 0; i < 4; i++) {
+  
+ do{
+
+   random1 = this.getRandomInt(0,this.ListEntre.length+1);
+
+ }while(ListTaken1.includes(ListTaken1[random1]) == false)
+
+this.CarteFinal.carteEntree.push(ListTaken1[random1] );
+if (i < 3){
+this.CarteFinal.Menu.Entree.push(ListTaken1[random1] );
+
+}
+//alert(this.CarteFinal.Menu.Entree[i].name)
+
+
+this.removeItem(ListTaken1,ListTaken1[random1] );
+    
+   
+
+
+}
+
+  //4 dessert 
+let ListTaken2 = this.ListDessert;
+  let random2 = 0;
+  
+for (let i = 0; i < 4; i++) {
+  
+ do{
+
+   random2 = this.getRandomInt(0,this.ListDessert.length+1);
+
+ }while(ListTaken2.includes(ListTaken2[random2]) == false)
+
+this.CarteFinal.carteDessert.push(ListTaken2[random2] );
+if (i < 3){
+this.CarteFinal.Menu.Dessert.push(ListTaken2[random2] );}
+this.removeItem(ListTaken2,ListTaken2[random2] );
+    
+   
+
+
+}
+
+  //6 plats 
+let ListTaken3 = this.ListPlats;
+  let random3 = 0;
+  
+for (let i = 0; i < 6; i++) {
+  
+ do{
+
+   random3 = this.getRandomInt(0,this.ListPlats.length+1);
+
+ }while(ListTaken3.includes(ListTaken3[random3]) == false)
+
+this.CarteFinal.cartePlat.push(ListTaken3[random3] );
+if (i < 3){
+this.CarteFinal.Menu.plat.push(ListTaken3[random3] );}
+this.removeItem(ListTaken3,ListTaken3[random3] );
+ }  
+  
+//generate 3 menu name
+ let Taken1 = this.Listname;
+
+  let Mrandom1 = 0;
+ 
+for (let i = 0; i < 3; i++) {
+  
+ do{
+//generate random number 
+   Mrandom1 = this.getRandomInt(0,this.Listname.length+1);
+   
+ }while(Taken1.includes(Taken1[Mrandom1]) == false)
+
+this.CarteFinal.Menu.nom.push(Taken1[Mrandom1] );
+
+this.removeItem(Taken1,Taken1[Mrandom1] );
+
+  
+
+
+}
+
+
+
+
+
+ },
+     removeItem(arr, value) {
+  var index = arr.indexOf(value);
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+},
     hidd:function( ){
 var ddl = document.getElementById("suc"); 
 
     ddl.style.display = "none";
     },
-    goTodetail(id) {
-      this.$router.push("/RestaurantDetail/" + id);
-    },
-    
+    getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+    ,
 
     getRestaurantsFromServer() {
       var ddl3 = document.getElementById("alrt");
