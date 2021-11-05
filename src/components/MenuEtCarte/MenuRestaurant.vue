@@ -3,7 +3,8 @@
    <h1 class="titlreCarte2">Nos Menu</h1>
    <hr data-content="AND" class="hr-text">
     <div>
- <h1 class="menutitle">{{CarteEtMenu.Menu.nom[0]}}</h1>
+ <b-row> <b-col md="10"><h1 class="menutitle">{{CarteEtMenu.Menu.nom[0]}}</h1></b-col><b-col><div> <md-button class=" md-icon-button  petit btn3 "   v-on:click="addP(CarteEtMenu.Menu.price[0],CarteEtMenu.Menu.nom[0])"><md-icon>add</md-icon></md-button></div></b-col></b-row>
+ 
 <b-row  class="sr1">
       <b-col md="4" class="sr1">
         <b-card-img src='../tajin.jpeg' class="aji" ></b-card-img>
@@ -15,6 +16,7 @@
    <span class="lis">Plat : </span>  {{CarteEtMenu.Menu.plat[0].name}} <br><br>
    <span class="lis">Dessert : </span>  {{CarteEtMenu.Menu.Dessert[0].name}}<br><br>
    
+   
    <span class="lis1"> {{CarteEtMenu.Menu.price[0]}} €</span>
       </b-col>
     </b-row>
@@ -23,7 +25,8 @@
     </div>
     <div>
       <hr data-content="AND" class="hr-text">
-<h1 class="menutitle">{{CarteEtMenu.Menu.nom[1]}}</h1>
+      <b-row> <b-col md="10"><h1 class="menutitle">{{CarteEtMenu.Menu.nom[1]}}</h1></b-col><b-col><div> <md-button class=" md-icon-button  petit btn3 "   v-on:click="addP(CarteEtMenu.Menu.price[1],CarteEtMenu.Menu.nom[1])"><md-icon>add</md-icon></md-button></div></b-col></b-row>
+ 
 <b-row  class="sr1">
       <b-col md="4" class="sr">
         <b-card-img src='../tajin.jpeg' class="aji"></b-card-img>
@@ -43,7 +46,8 @@
     </div>
     <hr data-content="AND" class="hr-text">
     <div>
-<h1 class="menutitle">{{CarteEtMenu.Menu.nom[2]}}</h1>
+    <b-row> <b-col md="10"><h1 class="menutitle">{{CarteEtMenu.Menu.nom[2]}}</h1></b-col><b-col><div> <md-button class=" md-icon-button  petit btn3 "   v-on:click="addP(CarteEtMenu.Menu.price[2],CarteEtMenu.Menu.nom[2])"><md-icon>add</md-icon></md-button></div></b-col></b-row>
+
 
 <b-row  class="sr1">
       <b-col md="4" class="sr">
@@ -70,12 +74,14 @@
 <script>
 export default {
   name: "MenuRestaurant",
-  props: ['CarteEtMenu']
+  props: ['CarteEtMenu',{test:4}]
     
   ,
   data: function () {
     return {
-     price1 :0
+    
+     dataToSens:{name:"",price:0},
+     myid : 0
 
     };
   },
@@ -84,8 +90,22 @@ mounted(){
    
 },
   methods: {
-clacule_prix(prix1,prix2,prix3){
-  return prix1+prix2+prix3
+addP:function(Price,name){
+var ddl4 = document.getElementById("t3");
+  var ddl3 = document.getElementById("carteI");
+ddl3.style.marginLeft = '0px';
+ddl3.style.width = '1480px';
+ddl4.style.display = 'block';
+
+  //var ddl3 = document.getElementById("carteI");
+  this.dataToSens.id = this.myid;
+this.dataToSens.name = name;
+this.dataToSens.price = Price;
+
+  //ddl3.style.marginTop = '30px';
+
+  this.$emit('addPrice',this.dataToSens)
+  this.myid = this.myid+1;
 }
 
 
@@ -97,7 +117,18 @@ clacule_prix(prix1,prix2,prix3){
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.petit {
+  width: 13;
+  background-color: green;
+height:25px;
+color:white;
+}
 
+
+.btn3 {
+margin: 0px;
+    margin-top: 10px;
+}
 .titlreCarte2 {
   font-family: Lucida Sans;
   font-size: 30px;

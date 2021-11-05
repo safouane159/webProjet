@@ -304,7 +304,7 @@ this.CarteFinal.Menu.nom.push(Taken1[Mrandom1] );
 this.removeItem(Taken1,Taken1[Mrandom1] );
 
   this.CarteFinal.Menu.price.push(this.CarteFinal.Menu.Dessert[i].prix+this.CarteFinal.Menu.plat[i].prix+this.CarteFinal.Menu.Entree[i].prix );
-alert( this.CarteFinal.Menu.price[i])
+
 
 }
 
