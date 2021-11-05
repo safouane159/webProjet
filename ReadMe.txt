@@ -5,5 +5,8 @@ Pour chaque restaurant vous pourrez consulter ses données dans une page sépare
 Remarque : nous avons changé dans le server la method qui permette d'insérer dans la base de données  pour qu'on puisse insérer la ville de restaurant aussi , donc je vous invite a telecharger notre version du server (inclus dans le repertoire git hub ) 
 
 
+Remarque : dans les commits dans git , vous constater que y a un user s'appelle her_username , en fait il s'agit d'un erreur l'hors de configuration de git au debut du projet 
+her_username ==> safouaneouazri
+
 Lien git hub :
 Lien video : 
