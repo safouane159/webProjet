@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="titlreCarte2">Nos Menu</h1>
-    <hr data-content="AND" class="hr-text" />
+    <hr  class="hr-text" />
 
     <!--------------- Menu 1-------------->
     <div>
@@ -42,7 +42,7 @@
       </b-row>
     </div>
     <div>
-      <hr data-content="AND" class="hr-text" />
+      <hr  class="hr-text" />
       <!--------------- Menu 2 -------------->
       <b-row>
         <b-col md="10"
@@ -80,7 +80,7 @@
         </b-col>
       </b-row>
     </div>
-    <hr data-content="AND" class="hr-text" />
+    <hr class="hr-text" />
     <!--------------- Menu 3 -------------->
     <div>
       <b-row>

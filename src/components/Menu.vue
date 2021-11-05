@@ -12,17 +12,17 @@
       </p>
       <nav>
         <b-nav vertical>
-          <hr data-content="AND" class="hr-text" />
+          <hr  class="hr-text" />
           <b-nav-item>
             <router-link to="/"> <div class="menui">Acceuil</div> </router-link>
           </b-nav-item>
-          <hr data-content="AND" class="hr-text" />
+          <hr class="hr-text" />
           <b-nav-item>
             <router-link to="/ListRestaurants">
               <div class="menui">List des restaurants</div>
             </router-link>
           </b-nav-item>
-          <hr data-content="AND" class="hr-text" />
+          <hr class="hr-text" />
         </b-nav>
       </nav>
     </div>

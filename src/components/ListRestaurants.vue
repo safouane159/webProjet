@@ -89,7 +89,7 @@
           >Restaurant ajouté avec success</b-alert
         >
         <b-form @submit="ajouterRestaurant($event)">
-          <hr data-content="AND" class="hr-text" />
+         
           <b-form-group
             id="input-group-1"
             label="Restaurant Name:"
@@ -113,7 +113,7 @@
               required
             ></b-form-input>
           </b-form-group>
-          <hr data-content="AND" class="hr-text" />
+          
           <b-form-group id="input-group-1" label="Ville:" label-for="input-1">
             <b-form-input
               id="input-1"

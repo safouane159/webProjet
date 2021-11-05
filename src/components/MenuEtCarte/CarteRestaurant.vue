@@ -28,7 +28,7 @@
     >
     {{ wsl.carteEntree[3].name }}......... {{ wsl.carteEntree[3].prix }} €<br />
 
-    <hr data-content="AND" class="hr-text" />
+    <hr class="hr-text" />
     <div>
       <!--------------- carte des des PLats -------------->
       <h1 class="titlreCarte">Nos Plats</h1>
@@ -167,7 +167,7 @@
         </b-col>
       </b-row>
     </div>
-    <hr data-content="AND" class="hr-text" />
+    <hr class="hr-text" />
     <!--------------- carte des des dessert -------------->
     <div>
       <h1 class="titlreCarte">Nos Dessert</h1>
@@ -201,7 +201,7 @@
       {{ wsl.carteDessert[3].prix }} €<br />
     </div>
 
-    <hr data-content="AND" class="hr-text" />
+    <hr  class="hr-text" />
     <!--------------- carte des des Boissons -------------->
     <div>
       <h1 class="titlreCarte">Nos Boissons</h1>
