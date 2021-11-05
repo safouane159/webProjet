@@ -103,7 +103,7 @@
               required
             ></b-form-input>
           </b-form-group>
-          <hr data-content="hello" class="hr-text" />
+          <hr class="hr-text" />
           <b-form-group id="input-group-1" label="Cuisine:" label-for="input-1">
             <b-form-input
               id="input-1"
@@ -552,26 +552,7 @@ export default {
 #colB {
   text-align: left;
 }
-hr.hr-text {
-  position: relative;
-  border: none;
-  height: 1px;
-  background: #999;
-}
-hr.hr-text::before {
-  content: attr(data-content);
-  display: inline-block;
-  background: #fff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  color: #999;
-  border-radius: 30rem;
-  padding: 0.2rem 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 #mylovelybuttons {
   margin-top: 20px;
 }
