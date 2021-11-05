@@ -3,11 +3,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import { BootstrapVue } from 'bootstrap-vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
-// Import Bootstrap an BootstrapVue CSS files (order is important)
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-// Make BootstrapVue available throughout your project
 
 import VueMaterial from 'vue-material'
 
@@ -23,7 +21,7 @@ Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(VueGoogleMaps, {
   load: {
-   // key: 'AIzaSyCQ4nWJ81OtLFgvISHrniBSs28twIi5Tao',
+    key: 'AIzaSyCQ4nWJ81OtLFgvISHrniBSs28twIi5Tao',
     libraries: 'places',
   }
 });
@@ -33,25 +31,26 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      
+
       component: Acceuil,
-      
+
     }, {
       path: "/ListRestaurants",
-      
+
       component: ListResaurants,
-      
-    },{
+
+    }, {
       path: "/RestaurantDetail",
-      name : 'RestaurantDetail',
+      name: 'RestaurantDetail',
       component: RestaurantDetail,
-     
-      
+
+
     },
-    {path: "/CarteMenuView",
-    name : 'CarteMenuView',
+    {
+      path: "/CarteMenuView",
+      name: 'CarteMenuView',
       component: CarteMenuView,
-      
+
     }
   ],
 });

@@ -5,20 +5,20 @@
         <div id="pic">
           <div id="title">
             <b-row>
-              <b-col >
-            <h2 id="small">Restaurant</h2>
-            <h1 id="big">{{ restaurant.name }}</h1>
+              <b-col>
+                <h2 id="small">Restaurant</h2>
+                <h1 id="big">{{ restaurant.name }}</h1>
               </b-col>
               <b-col id="btn3">
-            
-      
-      
-                  <md-button class="md-accent" id="btn4" v-on:click="gotTOoMenu()"><md-icon >restaurant</md-icon>Carte/Menu</md-button>
-      
+                <!--  button pour aller a la carte et menu -->
+                <md-button class="md-accent" id="btn4" v-on:click="gotTOoMenu()"
+                  ><md-icon>restaurant</md-icon>Carte/Menu</md-button
+                >
               </b-col>
-                   </b-row>
+            </b-row>
           </div>
         </div>
+        <!--  description du restaurant  -->
         <div id="info">
           <p id="desc">
             <span style="color: red"> {{ restaurant.name }} </span> is the ideal
@@ -40,7 +40,14 @@
             <md-divider class="md-inset"></md-divider>
             <md-list-item>
               <div class="md-list-item-text">
-                Address: <span id="myspan"> {{ restaurant.address.building}} {{ restaurant.address.street }}, &nbsp;{{ restaurant.borough }} &nbsp;{{ restaurant.address.zipcode }} </span>
+                Address:
+                <span id="myspan">
+                  {{ restaurant.address.building }}
+                  {{ restaurant.address.street }}, &nbsp;{{
+                    restaurant.borough
+                  }}
+                  &nbsp;{{ restaurant.address.zipcode }}
+                </span>
               </div>
             </md-list-item>
             <md-divider class="md-inset"></md-divider>
@@ -53,82 +60,79 @@
           </md-list>
         </div>
       </b-col>
-      <b-col id="maapC" >
+      <!--------  compenent map  -------------->
+      <b-col id="maapC">
         <div id="maap">
           <GmapMap
-            :center="{ lat:  restaurant.address.coord[1], lng: restaurant.address.coord[0] }"
+            :center="{
+              lat: restaurant.address.coord[1],
+              lng: restaurant.address.coord[0],
+            }"
             :zoom="12"
             style="width: 100%; height: 600px"
           >
             <GmapMarker
-              
-              :position="{ lat:  restaurant.address.coord[1], lng: restaurant.address.coord[0] }"
+              :position="{
+                lat: restaurant.address.coord[1],
+                lng: restaurant.address.coord[0],
+              }"
             />
           </GmapMap>
         </div>
       </b-col>
     </b-row>
-    
   </div>
-
-  <!-- <h1>detail de restaurant : {{id}}</h1>
-{{restaurant.name}} -->
 </template>
 
 <script>
 export default {
   name: "RestaurantDetail",
-  props: {
-
-  },
+  props: {},
   data: function () {
     return {
-     
-maCarteFinal:{ carteEntree:[],carteDessert:[],carteBoissons:[],cartePlat:[],Menu:[] },
-idR:0,
+      maCarteFinal: {
+        carteEntree: [],
+        carteDessert: [],
+        carteBoissons: [],
+        cartePlat: [],
+        Menu: [],
+      },
+      idR: 0,
       restaurant: null,
     };
   },
 
   methods: {
-gotTOoMenu(){
-this.$router.push({name: 'CarteMenuView' ,params:{id:this.idR , myobj:  this.maCarteFinal }});
-
-
-
-}
-
-
+    // method qui permet d'aller au menu du restaurant
+    gotTOoMenu() {
+      this.$router.push({
+        name: "CarteMenuView",
+        params: { id: this.idR, myobj: this.maCarteFinal },
+      });
+    },
   },
-  computed: {
-  obj(){
-    return this.$route.params.obj.carteBoissons  ;
-  }
-  },
+
   mounted() {
-    this.idR =this.$route.params.id ;
-    this.$route.params.obj.Menu.Entree
-    this.maCarteFinal.carteEntree = this.$route.params.obj.carteEntree ;
-this.maCarteFinal.carteDessert = this.$route.params.obj.carteBoissons ;
-this.maCarteFinal.carteBoissons = this.$route.params.obj.carteDessert ;
-this.maCarteFinal.cartePlat = this.$route.params.obj.cartePlat ;
-this.maCarteFinal.Menu = this.$route.params.obj.Menu ;
+    this.idR = this.$route.params.id;
+    this.$route.params.obj.Menu.Entree;
+    this.maCarteFinal.carteEntree = this.$route.params.obj.carteEntree;
+    this.maCarteFinal.carteDessert = this.$route.params.obj.carteBoissons;
+    this.maCarteFinal.carteBoissons = this.$route.params.obj.carteDessert;
+    this.maCarteFinal.cartePlat = this.$route.params.obj.cartePlat;
+    this.maCarteFinal.Menu = this.$route.params.obj.Menu;
 
-    let url = "http://localhost:8080/api/restaurants/"+this.$route.params.id  ;
+    let url = "http://localhost:8080/api/restaurants/" + this.$route.params.id;
     fetch(url)
       .then((reponse) => {
         return reponse.json();
       })
       .then((data) => {
         this.restaurant = data.restaurant;
-
-
       });
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #carte {
   background-color: aliceblue;
@@ -140,7 +144,7 @@ this.maCarteFinal.Menu = this.$route.params.obj.Menu ;
 
 #info {
   padding: 20px;
-  padding-right: 10PX;
+  padding-right: 10px;
   height: 60%;
 }
 #myicon {
@@ -200,20 +204,16 @@ this.maCarteFinal.Menu = this.$route.params.obj.Menu ;
 }
 #cool8 {
   padding-right: 0;
-  
 }
 #btn3 {
+  text-align: right;
 
-    text-align: right;
-    
-    padding-top: 60px;
-  
+  padding-top: 60px;
 }
 #btn4 {
-   font-family: Georgia, serif;
-color: rgb(255, 153, 0);
-    font-size: 20px;
-  
+  font-family: Georgia, serif;
+  color: rgb(255, 153, 0);
+  font-size: 20px;
 }
 #pic {
   width: 802px;
